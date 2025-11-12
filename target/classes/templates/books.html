@@ -1,0 +1,33 @@
+// Kinshuk khandelwal (13565)
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Books</title>
+</head>
+<body>
+    <h2>All Books</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="b : ${books}">
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.title}"></td>
+            <td th:text="${b.author}"></td>
+            <td th:text="${b.price}"></td>
+            <td>
+                <a th:href="@{'/edit/' + ${b.id}}">✏️ Edit</a> |
+                <a th:href="@{'/delete/' + ${b.id}}" onclick="return confirm('Are you sure?');">🗑️ Delete</a>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/">⬅ Back</a> | <a href="/addbook">➕ Add New Book</a>
+</body>
+</html>
